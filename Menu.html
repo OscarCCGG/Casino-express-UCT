@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Comida</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Poppins', sans-serif;
+            color: #b93636;
+            margin: 0;
+            padding: 0;
+            background-image: url(menu.jpg);
+            background-size: 100%;
+            background-position: top;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            display: none;
+            position: relative;
+            width: 320px;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(155, 36, 36, 0.1);
+            transition: transform 0.3s ease-in-out;
+            background-color: #fff;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.2);
+        }
+
+        .menu-item .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(49, 48, 48, 0.3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            height: 45%;
+            transition: background-color 0.5s ease;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .menu-item p {
+            margin: 10px 0 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .menu-item .price {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffbf00;
+        }
+
+        .add-to-cart {
+            margin-top: 15px;
+            background-color: #ffbf00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e6a900;
+            transform: scale(1.05);
+        }
+
+        /* Botón del carrito */
+        .cart-button {
+            position: fixed;
+            top: 25px;
+            right: 20px;
+            background-color: #ffbf00;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background-color: #e6a900;
+            transform: scale(1.05);
+        }
+
+        /* Categorías */
+        .categories {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .categories button {
+            padding: 12px 25px;
+            margin: 5px;
+            background: linear-gradient(45deg, #ffbf00, #ffa500);
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .categories button i {
+            margin-right: 8px;
+        }
+
+        .categories button:hover {
+            background: linear-gradient(45deg, #e6a900, #cc8800);
+            transform: scale(1.05);
+        }
+
+        .categories button:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 165, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="cart-button" onclick="showCart()">
+        <i class="fas fa-shopping-cart"></i> Carrito
+    </button>
+
+    <div class="categories">
+
+        <button onclick="filterMenu('postres')"><i class="fas fa-ice-cream"></i>Postres</button>
+        <button onclick="filterMenu('sanwiches')"><i class="fas fa-bread-slice"></i>Sándwiches</button>
+        <button onclick="filterMenu('cafes')"><i class="fas fa-coffee"></i>Cafés</button>
+        <button onclick="filterMenu('frutas')"><i class="fas fa-apple-alt"></i>Frutas</button>
+    </div>
+
+    <div class="menu-container">
+        <div class="menu-item ensaladas">
+            <img src="img/ensalada césar.jpg" alt="Ensalada César">
+            <div class="info">
+                <h3>Ensalada César</h3>
+                <p>Ingredientes: Lechuga romana, pollo, crutones, queso parmesano.</p>
+                <div class="price">$3.590</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada César', 3590)">Agregar</button>
+            </div>
+        </div>
+
+
+
+
+
+        
+
+
+
+
+        <div class="menu-item postres">
+            <img src="img/postre mix.jpg" alt="Cupcake de Chocolate">
+            <div class="info">
+                <h3>Cupcake de Chocolate</h3>
+                <p>Ingredientes: Harina, cacao, mantequilla, azúcar, chocolate.</p>
+                <div class="price">$2.590</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item postres">
+            <img src="img/macarrones.jpg" alt="Macarrones">
+            <div class="info">
+                <h3>Macarrones</h3>
+                <p>Ingredientes: Harina, cacao, mantequilla, azúcar, crema.</p>
+                <div class="price">$3.990</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item postres">
+            <img src="img/donuts.jpg" alt="Donas">
+            <div class="info">
+                <h3>Donuts</h3>
+                <p>Ingredientes: Harina, mantequilla, azúcar, chispas de chocolate.</p>
+                <div class="price">$1.490</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item postres">
+            <img src="img/mini torta.jpg" alt="Mini Torta">
+            <div class="info">
+                <h3>Mini Torta</h3>
+                <p>Ingredientes: Harina, cacao, mantequilla, azúcar, chocolate, frutas.</p>
+                <div class="price">$4.590</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item postres">
+            <img src="img/galletas.jpg" alt="Galle">
+            <div class="info">
+                <h3>Galletas</h3>
+                <p>Ingredientes: Harina, cacao, mantequilla, azúcar, coco.</p>
+                <div class="price">$990</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item postres">
+            <img src="img/tarta.jpg" alt="Cupcake de Chocolate">
+            <div class="info">
+                <h3>Tarta</h3>
+                <p>Ingredientes: Harina, cacao, mantequilla, azúcar, mix de frutas.</p>
+                <div class="price">$2.590</div>
+                <button class="add-to-cart" onclick="addToCart('Cupcake de Chocolate', 2590)">Agregar</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="menu-item sanwiches">
+            <img src="img/vegana.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Sándwich de Pollo</h3>
+                <p>Ingredientes: Pan integral, pollo, lechuga, mayonesa.</p>
+                <div class="price">$3.590</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item sanwiches">
+            <img src="img/hamburguesa.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Sándwich de Carne</h3>
+                <p>Ingredientes: Pan, vacuno, tomate, lechuga, mayonesa.</p>
+                <div class="price">$4.990</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item sanwiches">
+            <img src="img/combo.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Combo Universitario</h3>
+                <p>Ingredientes: Pan, canre, tomate, lechuga, papas fritas, jugo natural.</p>
+                <div class="price">$7.990</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item sanwiches">
+            <img src="img/brochetas.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Brochetas de Pollo</h3>
+                <p>Ingredientes: Pollo, tomate, pimenton.</p>
+                <div class="price">$2.990</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item sanwiches">
+            <img src="img/papas fritas.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Papas Fritas</h3>
+                <p>Ingredientes: Papas, aliños.</p>
+                <div class="price">$1.990</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item sanwiches">
+            <img src="img/pizza.jpg" alt="Sándwich de Pollo">
+            <div class="info">
+                <h3>Pizza Pepperoni</h3>
+                <p>Ingredientes: Masa de pizza, pollo, tomate, epperoni, aliños.</p>
+                <div class="price">$4.990</div>
+                <button class="add-to-cart" onclick="addToCart('Sándwich de Pollo', 4990)">Agregar</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="menu-item cafes">
+            <img src="img/cafe2.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Café Americano</h3>
+                <p>Ingredientes: Café molido, agua caliente.</p>
+                <div class="price">$2.990</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+        
+        <div class="menu-item cafes">
+            <img src="img/chocolate caliente.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Chocolate Caliente</h3>
+                <p>Ingredientes: Chocolate, agua caliente.</p>
+                <div class="price">$1.190</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item cafes">
+            <img src="img/expresso.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Expreso</h3>
+                <p>Ingredientes: Café granos, agua caliente.</p>
+                <div class="price">$2.100</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item cafes">
+            <img src="img/capucchino.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Cappuccino</h3>
+                <p>Ingredientes: Café, leche, agua caliente.</p>
+                <div class="price">$1.890</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item cafes">
+            <img src="img/latte.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Latte</h3>
+                <p>Ingredientes: Café, leche, agua caliente.</p>
+                <div class="price">$1.490</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item cafes">
+            <img src="img/cafe negro.jpg" alt="Café Americano">
+            <div class="info">
+                <h3>Café Negro</h3>
+                <p>Ingredientes: Café grano, agua caliente.</p>
+                <div class="price">$3.190</div>
+                <button class="add-to-cart" onclick="addToCart('Café Americano', 2990)">Agregar</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="menu-item frutas">
+            <img src="img/arandanos.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Arandanos</h3>
+                <p>Ingredientes: Arandanos.</p>
+                <div class="price">$1.900</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item frutas">
+            <img src="img/cerezas.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Cerezas</h3>
+                <p>Ingredientes: Cerezas.</p>
+                <div class="price">$1.990</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item frutas">
+            <img src="img/sandia.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Sandía</h3>
+                <p>Ingredientes: Sandía.</p>
+                <div class="price">$2.190</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item frutas">
+            <img src="img/frutilla.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Frutillas</h3>
+                <p>Ingredientes: Fresas, kiwi, plátano, manzana, uvas.</p>
+                <div class="price">$990</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item frutas">
+            <img src="img/frambuesa.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Frambuesa</h3>
+                <p>Ingredientes: Frambuesas.</p>
+                <div class="price">$1.150</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+        <div class="menu-item frutas">
+            <img src="img/kiwi.jpg" alt="Ensalada de Frutas">
+            <div class="info">
+                <h3>Kiwis</h3>
+                <p>Ingredientes: Kiwi.</p>
+                <div class="price">$890</div>
+                <button class="add-to-cart" onclick="addToCart('Ensalada de Frutas', 3590)">Agregar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function filterMenu(category) {
+            var items = document.getElementsByClassName('menu-item');
+            for (var i = 0; i < items.length; i++) {
+                if (category === 'all') {
+                    items[i].style.display = 'block';
+                } else {
+                    if (items[i].classList.contains(category)) {
+                        items[i].style.display = 'block';
+                    } else {
+                        items[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        function addToCart(itemName, itemPrice) {
+            alert(itemName + " ha sido agregado al carrito. Precio: $" + itemPrice);
+            // Aquí puedes agregar lógica adicional para gestionar el carrito.
+        }
+
+        function showCart() {
+            alert("Mostrar contenido del carrito.");
+            // Aquí puedes agregar lógica para mostrar el carrito de compras real.
+        }
+
+        filterMenu('all');
+    </script>
+
+</body>
+
+</html>

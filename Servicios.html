@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="servicios.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            background-image: url(menu.jpg);
+            background-size: cover;
+            background-position: center;
+            margin: 50px;
+            padding: 50px;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(153, 118, 86, 0.6);
+            padding: 10px;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        table, th, td {
+            border: 1px solid white;
+            text-align: left;
+            padding: 15px;
+        }
+
+        th {
+            background-color: rgba(153, 118, 86, 0.6);
+        }
+
+        td {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            background: rgba(182, 207, 136, 0.5);
+            padding: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px); /* Comienza desde abajo */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Se coloca en su lugar */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Detalles del Servicio</h2>
+
+        <table>
+            <tr>
+                <th>Sección</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>Descripciones detalladas de productos</td>
+                <td>1. Explora nuestros productos para descubrir sus características únicas y 
+                beneficios excepcionales. Cada artículo tiene una descripción detallada que te ayudará a 
+                tomar la mejor decisión de compra.</td>
+            </tr>
+            <tr>
+                <td>Precios y opciones de pago</td>
+                <td>2. Ofrecemos precios transparentes para que sepas exactamente lo que estás pagando. 
+                    Además, tenemos opciones de pago flexibles para que elijas la que mejor se adapte a tus 
+                    necesidades y conveniencia.</td>
+            </tr>
+            <tr>
+                <td>Proceso de compra</td>
+                <td>3. Comprar con nosotros es fácil y rápido. Nuestro proceso de compra es simple, y estaremos 
+                    contigo en cada paso del camino.</td>
+            </tr>
+            <tr>
+                <td>Políticas de devolución y garantía</td>
+                <td>4. Queremos que te sientas seguro con tu compra. Por eso, ofrecemos una política 
+                    de devolución sin complicaciones y garantías que respaldan la calidad de nuestros productos.</td>
+            </tr>
+            <tr>
+                <td>Tiempo y costos de envío</td>
+                <td>5. Entendemos que quieres recibir tus productos lo antes posible. Proporcionamos 
+                    estimaciones realistas sobre el tiempo de entrega y opciones de seguimiento.</td>
+            </tr>
+            <tr>
+                <td>Información de contacto y atención al cliente</td>
+                <td>6. Puedes ponerte en contacto con nuestro equipo de atención al cliente a través de 
+                    correo electrónico o teléfono durante nuestros horarios de atención.</td>
+            </tr>
+            <tr>
+                <td>Reseñas y testimonios</td>
+                <td>7. Descubre lo que dicen nuestros clientes sobre sus experiencias. Las reseñas y 
+                    testimonios reales son la mejor manera de conocer la calidad de nuestros productos.</td>
+            </tr>
+            <tr>
+                <td>Información sobre la empresa</td>
+                <td>8. Somos una empresa comprometida con la calidad y la satisfacción del cliente. 
+                    Descubre nuestra historia, valores y lo que nos hace únicos en el mercado.</td>
+            </tr>
+            <tr>
+                <td>FAQ (Preguntas frecuentes)</td>
+                <td>9. Consulta nuestras preguntas frecuentes para obtener respuestas 
+                    rápidas a las cuestiones más comunes.</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
