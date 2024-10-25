@@ -22,6 +22,7 @@ CREATE TABLE `Producto` (
   `producto_ID` INT(7) AUTO_INCREMENT,
   `nombre_producto` VARCHAR(50),
   `descripcion` VARCHAR(100),
+  `categoria` VARCHAR(100),
   `precio` DECIMAL(10,2), 
   `cantidad` INT(3),
   PRIMARY KEY (`producto_ID`)
