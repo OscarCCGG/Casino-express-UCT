@@ -6,14 +6,16 @@
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
-    <h2>Iniciar sesión</h2>
     <form action="PHP/login.php" method="POST">
-        <input type="email" name="correo" id="correo" placeholder="Correo">
+        <h2>Iniciar sesión</h2>
+        <input type="email" name="correo" id="correo" placeholder="Correo" required>
         <input type="password" name="contra" id="contra" placeholder="Contraseña" required>
         <button type="submit">Iniciar sesión</button>
+        
+        <div class="extra-buttons"> 
+            <a href="registro.html">Regístrate aquí</a>
+            <a href="index.php">Volver</a>
+        </div>
     </form>
-    <p>No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
-    <p>Quieres Ver mas <a href="index.html">Pagina Principal</a></p>
-    
 </body>
 </html>
