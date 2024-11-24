@@ -1,4 +1,4 @@
--- Actualizacion De MER por problemas
+-- Crear la tabla Usuario
 CREATE TABLE `Usuario` (
   `usuario_ID` INT(6) AUTO_INCREMENT,
   `nombre` VARCHAR(50),
@@ -9,6 +9,7 @@ CREATE TABLE `Usuario` (
   PRIMARY KEY (`usuario_ID`)
 );
 
+-- Crear la tabla Compra
 CREATE TABLE `Compra` (
   `compra_ID` INT(7) AUTO_INCREMENT,
   `usuario_ID` INT(6),
@@ -18,6 +19,7 @@ CREATE TABLE `Compra` (
   FOREIGN KEY (`usuario_ID`) REFERENCES `Usuario`(`usuario_ID`)
 );
 
+-- Crear la tabla Producto
 CREATE TABLE `Producto` (
   `producto_ID` INT(7) AUTO_INCREMENT,
   `nombre_producto` VARCHAR(50),
@@ -28,6 +30,7 @@ CREATE TABLE `Producto` (
   PRIMARY KEY (`producto_ID`)
 );
 
+-- Crear la tabla Detalle_Compra
 CREATE TABLE `Detalle_Compra` (
   `detalle_compra_ID` INT(7) AUTO_INCREMENT,
   `compra_ID` INT(7),
@@ -39,11 +42,13 @@ CREATE TABLE `Detalle_Compra` (
   FOREIGN KEY (`producto_ID`) REFERENCES `Producto`(`producto_ID`)
 );
 
-CREATE TABLE `Retiro` (
-  `retiro_ID` INT(7) AUTO_INCREMENT,
-  `compra_ID` INT(7),
-  `fecha_retiro` DATETIME,
-  `estado_retiro` ENUM("Pendiente", "Listo para Retiro", "Completado"),
-  PRIMARY KEY (`retiro_ID`),
-  FOREIGN KEY (`compra_ID`) REFERENCES `Compra`(`compra_ID`)
+-- Crear la nueva tabla Carro
+CREATE TABLE `Carro` (
+  `carro_ID` INT AUTO_INCREMENT PRIMARY KEY,
+  `usuario_ID` INT NOT NULL,
+  `producto_ID` INT NOT NULL,
+  `cantidad` INT NOT NULL,
+  `fecha_agregado` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`usuario_ID`) REFERENCES `Usuario`(`usuario_ID`),
+  FOREIGN KEY (`producto_ID`) REFERENCES `Producto`(`producto_ID`)
 );
